@@ -37,8 +37,9 @@ namespace WalletAdmin.Mapping
             });
             Property(b => b.SAI_VALOR, x =>
             {
-                x.Type(NHibernateUtil.Decimal);
+                x.Type(NHibernateUtil.Double);
             });
+            Table("Tabela_Movimento_Saida");
         }
     }
 }
