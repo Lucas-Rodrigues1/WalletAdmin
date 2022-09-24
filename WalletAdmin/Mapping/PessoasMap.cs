@@ -17,7 +17,7 @@ namespace WalletAdmin.Mapping
             Id(x => x.PES_CODIGO, x =>
               {
                   x.Generator(Generators.Increment);
-                  x.Type(NHibernateUtil.Int64);
+                  x.Type(NHibernateUtil.Int32);
                   x.Column("PES_CODIGO");
 
               });
@@ -37,19 +37,19 @@ namespace WalletAdmin.Mapping
             });
             Property(b => b.PES_SALARIO, x =>
             {
-                x.Type(NHibernateUtil.Double);
+                x.Type(NHibernateUtil.Decimal);
             });
             Property(b => b.PES_MINIMO, x =>
             {
-                x.Type(NHibernateUtil.Double);
+                x.Type(NHibernateUtil.Decimal);
             });   
             Property(b => b.PES_LIMITE, x =>
             {
-                x.Type(NHibernateUtil.Double);
+                x.Type(NHibernateUtil.Decimal);
             }); 
             Property(b => b.PES_SALDO, x =>
             {
-                x.Type(NHibernateUtil.Double);
+                x.Type(NHibernateUtil.Decimal);
             });
             Table("Tabela_Pessoas");
         }

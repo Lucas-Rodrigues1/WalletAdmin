@@ -16,13 +16,13 @@ namespace WalletAdmin.Mapping
             Id(x => x.ENT_CODIGO, x =>
             {
                 x.Generator(Generators.Increment);
-                x.Type(NHibernateUtil.Int64);
+                x.Type(NHibernateUtil.Int32);
                 x.Column("ENT_CODIGO");
             });
 
             Property(b => b.PES_CODIGO, x =>
             {
-                x.Type(NHibernateUtil.Int64);
+                x.Type(NHibernateUtil.Int32);
                 x.NotNullable(true);
             });
             Property(b => b.ENT_DATA, x =>
@@ -38,7 +38,7 @@ namespace WalletAdmin.Mapping
             });
             Property(b => b.ENT_VALOR, x =>
             {
-                x.Type(NHibernateUtil.Double);
+                x.Type(NHibernateUtil.Decimal);
             });
             Table("Tabela_Movimento_Entrada");
         }
