@@ -53,7 +53,7 @@ namespace WalletAdmin
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Cadastro}/{action=Cadastro}/{id?}");
             });
         }
     }
