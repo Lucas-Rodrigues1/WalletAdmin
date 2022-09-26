@@ -21,6 +21,7 @@ namespace WalletAdmin.Database
                 c.KeywordsAutoImport = Hbm2DDLKeyWords.AutoQuote;
                 c.SchemaAction = SchemaAutoAction.Update;
                 c.LogFormattedSql = true;
+                c.LogFormattedSql = true;
                 c.LogSqlInConsole = true;
             });
             configuration.AddMapping(entityMapping);

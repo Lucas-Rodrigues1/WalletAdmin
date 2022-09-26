@@ -27,10 +27,16 @@ namespace WalletAdmin.Mapping
                 x.NotNullable(true);
 
             });
+            Property(b => b.Email, x =>
+            {
+                x.Length(50);
+                x.Type(NHibernateUtil.String);
+                x.NotNullable(true);
+            });
             Property(b => b.Senha, x =>
             {
-                x.Length(30);
-                x.Type(NHibernateUtil.String);
+                x.Length(50);
+                x.Type(NHibernateUtil.Int32);
                 x.NotNullable(true);
             });
 
