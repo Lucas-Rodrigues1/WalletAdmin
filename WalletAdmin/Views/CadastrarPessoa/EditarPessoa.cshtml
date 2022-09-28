@@ -1,0 +1,50 @@
+﻿@model WalletAdmin.Entidades.Tabela_Pessoas
+
+@{
+    ViewData["Title"] = "EditarPessoas";
+}
+
+<h1>EditarPessoas</h1>
+
+<h4>Tabela_Pessoas</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditarPessoaa">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PES_NOME" class="control-label">Nome</label>
+                <input asp-for="PES_NOME" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PES_EMAIL" class="control-label">E-mail</label>
+                <input asp-for="PES_EMAIL" class="form-control" />
+             
+            </div>
+            <div class="form-group">
+                <label asp-for="PES_SALARIO" class="control-label"></label>
+                <input asp-for="PES_SALARIO" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PES_LIMITE" class="control-label"></label>
+                <input asp-for="PES_LIMITE" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PES_MINIMO" class="control-label"></label>
+                <input asp-for="PES_MINIMO" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PES_SALDO" class="control-label"></label>
+                <input asp-for="PES_SALDO" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

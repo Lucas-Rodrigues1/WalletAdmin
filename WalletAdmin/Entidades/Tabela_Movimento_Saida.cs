@@ -11,6 +11,6 @@ namespace WalletAdmin.Entidades
         public virtual int PES_CODIGO { get; set; }
         public virtual DateTime SAI_DATA { get; set; }
         public virtual string SAI_DESCRICAO { get; set; }
-        public virtual double SAI_VALOR { get; set; }
+        public virtual decimal SAI_VALOR { get; set; }
     }
 }
