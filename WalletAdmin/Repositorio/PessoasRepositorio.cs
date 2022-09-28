@@ -32,15 +32,15 @@ namespace WalletAdmin.Repositorio
 
         public IEnumerable<Tabela_Pessoas> FindAll() => _session.Query<Tabela_Pessoas>().ToList();
 
-        public async Task<Tabela_Pessoas> FindByID(long id) => await _session.GetAsync<Tabela_Pessoas>(id);
+        public async Task<Tabela_Pessoas> FindByID(long pes_codigo) => await _session.GetAsync<Tabela_Pessoas>(pes_codigo);
 
-        public async Task Remove(long id)
+        public async Task Remove(long pes_codigo)
         {
             ITransaction transaction = null;
             try
             {
                 transaction = _session.BeginTransaction();
-                var item = await _session.GetAsync<Tabela_Pessoas>(id);
+                var item = await _session.GetAsync<Tabela_Pessoas>(pes_codigo);
                 await _session.DeleteAsync(item);
                 await transaction.CommitAsync();
             }

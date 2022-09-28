@@ -39,16 +39,16 @@ namespace WalletAdmin.Controllers
         }
 
         // GET: CadastrarPessoaController/Edit/5
-        public async Task<ActionResult> EditarPessoa(long? id)
+        public async Task<ActionResult> EditarPessoa(long? pes_codigo)
         {
-            if (id == null)
+            if (pes_codigo == null)
             {
-                return StatusCode(StatusCodes.Status400BadRequest);
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
-            Tabela_Pessoas tabela_pessoas = await pessoasRepositorio.FindByID(id.Value);
+            Tabela_Pessoas tabela_pessoas = await pessoasRepositorio.FindByID(pes_codigo.Value);
             if (tabela_pessoas == null)
             {
-                return StatusCode(StatusCodes.Status404NotFound);
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
             return View(tabela_pessoas);
         }
@@ -61,7 +61,7 @@ namespace WalletAdmin.Controllers
             if (ModelState.IsValid)
             {
                 await pessoasRepositorio.Update(tabela_pessoas);
-                return RedirectToAction("Index");
+                return RedirectToAction("PesquisaCliente","Pesquisa");
             }
             return View(tabela_pessoas);
         }
