@@ -6,9 +6,9 @@ namespace WalletAdmin.Repositorio
     public interface IRepository<T>
     {
         Task Add(T item);
-        Task Remove(long id);
+        Task Remove(int id);
         Task Update(T item);
-        Task<T> FindByID(long id);
+        Task<T> FindByID(int pes_codigo);
         IEnumerable<T> FindAll();
     }
 

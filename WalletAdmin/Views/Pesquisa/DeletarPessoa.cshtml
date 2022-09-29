@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WalletAdmin.Entidades.Tabela_Pessoas>
+﻿@model WalletAdmin.Entidades.Tabela_Pessoas
+
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -118,8 +119,8 @@
                                     My Balance
                                 </a>
                                 <a class="dropdown-item" href="javascript:void(0)">
-                                    <i class="ti-email m-r-5 m-l-5"></i>
-                                    Inbox
+                                    <i class="ti-export m-r-5 m-l-5"></i>
+                                    Sair
                                 </a>
                             </ul>
                         </li>
@@ -190,10 +191,10 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 d-flex align-items-center">
                                 <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                                <li class="breadcrumb-item active" aria-current="page">Excluir</li>
                             </ol>
                         </nav>
-                        <h1 class="mb-0 fw-bold">Profile</h1>
+                        <h1 class="mb-0 fw-bold">Excluir Pessoa</h1>
                     </div>
                     <div class="col-6">
                         <div class="text-end ">
@@ -208,73 +209,103 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid ">
+            <div class="container-fluid">
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- Row -->
-                <table class="table">
-                    <tr>
-                        <th>
+                <dl class="dl-horizontal">
+                    <hr />
+                    <dt>
+                        <h3>
                             #ID
-                        </th>
-                        <th>
+                        </h3>
+                    </dt>
+                    <dd>
+                        <h4>
+                            @Html.DisplayFor(model => model.PES_CODIGO)
+                        </h4>
+                    </dd>
+                    <hr />
+                    <dt>
+                        <h3>
                             Nome
-                        </th>
-                        <th>
+                        </h3>
+                    </dt>
+                    <dd>
+                        <h4>
+                            @Html.DisplayFor(model => model.PES_NOME)
+                        </h4>
+                    </dd>
+                    <hr />
+                    <dt>
+                        <h3>
                             E-mail
-                        </th>
-                        <th>
+                        </h3>
+                    </dt>
+                    <dd>
+                        <h4>
+                            @Html.DisplayFor(model => model.PES_EMAIL)
+                        </h4>
+                    </dd>
+                    <hr />
+                    <dt>
+                        <h3>
                             Salário
-                        </th>
-                        <th>
+                        </h3>
+                    </dt>
+                    <dd>
+                        <h4>
+                            @Html.DisplayFor(model => model.PES_SALARIO)
+                        </h4>
+                    </dd>
+                    <hr />
+                    <dt>
+                        <h3>
                             Limite
-                        </th>
-                        <th>
+                        </h3>
+                    </dt>
+                    <dd>
+                        <h4>
+                            @Html.DisplayFor(model => model.PES_LIMITE)
+                        </h4>
+                    </dd>
+                    <hr />
+                    <dt>
+                        <h3>
                             Mínimo
-                        </th>
-                        <th>
+                        </h3>
+                    </dt>
+                    <dd>
+                        <h4>
+                            @Html.DisplayFor(model => model.PES_MINIMO)
+                        </h4>
+                    </dd>
+                    <hr />
+                    <dt>
+                        <h3>
                             Saldo
-                        </th>
-                        <th></th>
-                    </tr>
+                        </h3>
+                    </dt>
+                    <dd>
+                        <h4>
+                            @Html.DisplayFor(model => model.PES_SALDO)
+                        </h4>
+                    </dd>
+                    <hr />
+                </dl>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_CODIGO)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_NOME)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_EMAIL)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_SALARIO)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_LIMITE)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_MINIMO)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_SALDO)
-                            </td>
-                            <td>
-                                <button class="btn btn-default">
-                                    @Html.ActionLink("Editar", "EditarPessoa", new { pes_codigo = item.PES_CODIGO })
-                                </button>
-                                <button class="btn btn-danger">
-                                    @Html.ActionLink("Excluir", "DeletarPessoa", new { pes_codigo = item.PES_CODIGO })
-                                </button>
-                            </td>
-                        </tr>
-                    }
-
-                </table>
+                    <div class="form-actions no-color">
+                        <button type="submit" value="Delete"class="btn btn-danger"> <span class="excluir">Excluir</span></button>
+                        <button class="btn btn-warning">
+                            @Html.ActionLink("" +
+                           "Voltar", "PesquisaCliente")
+                        </button>
+                    </div>
+                }
 
             </div>
             <!-- Row -->
@@ -335,5 +366,12 @@
             color: white;
             text-decoration: none;
         }
+            button .excluir{
+                color:white;
+            }
 </style>
 </html>
+
+
+
+

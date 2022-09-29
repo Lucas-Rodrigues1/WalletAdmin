@@ -40,9 +40,9 @@ namespace WalletAdmin.Repositorio
             throw new NotImplementedException();
         }
 
-        public async Task<Tabela_Usuarios> FindByID(long id) => await _session.GetAsync<Tabela_Usuarios>(id);
+        public async Task<Tabela_Usuarios> FindByID(int id) => await _session.GetAsync<Tabela_Usuarios>(id);
 
-        public async Task Remove(long id)
+        public async Task Remove(int id)
         {
             ITransaction transaction = null;
             try
