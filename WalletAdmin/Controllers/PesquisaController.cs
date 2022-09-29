@@ -17,7 +17,7 @@ namespace WalletAdmin.Controllers
 
         // GET: CadastroPessoas
         public ActionResult PesquisaCliente()
-        {
+         {
             return View(pessoasrepositorio.FindAll().ToList());
         }
 
