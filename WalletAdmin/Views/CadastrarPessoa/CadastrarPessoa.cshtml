@@ -57,13 +57,13 @@
                     <!-- ============================================================== -->
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
-                         <b class="logo-icon">
-                                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                                <!-- Dark Logo icon -->
-                                <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo icon -->
-                                <img src="" alt="homepage" class="light-logo" />
-                            </b>
+                        <b class="logo-icon">
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="" alt="homepage" class="light-logo" />
+                        </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
@@ -225,31 +225,28 @@
                     <div class="col-md-12" style="margin: 0 auto;">
                         <form asp-action="CadastrarPessoa">
                             <div class="row">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group col-12 col-md-6">
-                                    <label asp-for="PES_NOME" class="control-label">Nome</label>
-                                    <input asp-for="PES_NOME" id="Nome" class="form-control" placeholder="Nome"  />
+                                    <label class="control-label">Nome</label>
+                                    <input asp-for="PES_NOME" id="Nome" class="form-control" placeholder="Nome" />
                                 </div>
                                 <div class="form-group col-12 col-md-6">
-                                    <label asp-for="PES_EMAIL" class="control-label">E-mail</label>
-                                    <input asp-for="PES_EMAIL" class="form-control" placeholder="E-mail"  />
+                                    <label class="control-label">E-mail</label>
+                                    <input asp-for="PES_EMAIL" class="form-control" placeholder="E-mail" />
                                 </div>
                                 <div class="form-group col-12 col-md-4">
-                                    <label asp-for="PES_SALARIO" class="control-label">Salário</label>
-                                    <input asp-for="PES_SALARIO" class="form-control" placeholder="Salário"  />
+                                    <label class="control-label">Salário</label>
+                                    <input asp-for="PES_SALARIO" class="form-control" placeholder="Salário" />
                                 </div>
                                 <div class="form-group col-12 col-md-4">
                                     <label class="control-label">Limite De Segurança</label>
-                                    <input asp-for="PES_LIMITE" class="form-control" placeholder="Limite Seguro"  />
-                                    <span class="text-danger"></span>
+                                    <input class="form-control" placeholder="Limite Seguro" />
                                 </div>
                                 <div class="form-group col-12 col-md-4">
-                                    <label asp-for="PES_MINIMO" class="control-label">Mínimo</label>
-                                    <input asp-for="PES_MINIMO" class="form-control" placeholder="Mínimo em conta"  />
+                                    <label class="control-label">Mínimo</label>
+                                    <input asp-for="PES_MINIMO" class="form-control" placeholder="Mínimo em conta" />
                                 </div>
-
                                 <div class="form-group d-flex justify-content-end">
-                                    <input type="submit" value="Criar" class="btn btn-primary "/>
+                                    <input type="submit" value="Criar" class="btn btn-primary " />
                                 </div>
                             </div>
                         </form>
