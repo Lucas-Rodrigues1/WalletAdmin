@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WalletAdmin.Database;
+using WalletAdmin.Repositorio;
 
 namespace WalletAdmin
 {
@@ -26,6 +27,7 @@ namespace WalletAdmin
         {
             services.AddNHibernate(Configuration.GetConnectionString("SQLConnection"));
             services.AddControllersWithViews();
+            services.AddScoped<IEmail, Email>();
         }
 
 

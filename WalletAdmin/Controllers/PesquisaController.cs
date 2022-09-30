@@ -11,10 +11,13 @@ namespace WalletAdmin.Controllers
 {
     public class PesquisaController : Controller
     {
+        private readonly IEmail _email;
         private readonly PessoasRepositorio pessoasrepositorio;
 
-        public PesquisaController(NHibernate.ISession session) => pessoasrepositorio = new PessoasRepositorio(session);
-
+        public PesquisaController(NHibernate.ISession session, IEmail email) {
+            pessoasrepositorio = new PessoasRepositorio(session);
+            _email = email;
+        }
         // GET: CadastroPessoas
         public ActionResult PesquisaCliente()
          {
@@ -41,9 +44,12 @@ namespace WalletAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditarPessoa([Bind("PES_CODIGO,PES_NOME,PES_EMAIL,PES_SALARIO,PES_LIMITE,PES_MINIMO,PES_SALDO")] Tabela_Pessoas tabela_pessoas)
         {
-            if (ModelState.IsValid)
+            
+           
+            if (ModelState.IsValid )
             {
                 await pessoasrepositorio.Update(tabela_pessoas);
+                _email.Enviar(tabela_pessoas.PES_EMAIL, "Teste", "TESTE");
                 return RedirectToAction("PesquisaCliente");
             }
             return View(tabela_pessoas);
