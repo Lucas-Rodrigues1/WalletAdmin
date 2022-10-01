@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +13,17 @@ namespace WalletAdmin.Controllers
     public class PesquisaController : Controller
     {
         private readonly IEmail _email;
+        private readonly IConfiguration config;
         private readonly PessoasRepositorio pessoasrepositorio;
 
-        public PesquisaController(NHibernate.ISession session, IEmail email) {
+        public PesquisaController(NHibernate.ISession session, IEmail email)
+        {
             pessoasrepositorio = new PessoasRepositorio(session);
             _email = email;
         }
         // GET: CadastroPessoas
         public ActionResult PesquisaCliente()
-         {
+        {
             return View(pessoasrepositorio.FindAll().ToList());
         }
 
@@ -40,19 +43,25 @@ namespace WalletAdmin.Controllers
         }
 
         // POST: CadastrarPessoaController/Edit/5
-        [HttpPost]
+        [HttpPost, ActionName("EditarPessoa")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EditarPessoa([Bind("PES_CODIGO,PES_NOME,PES_EMAIL,PES_SALARIO,PES_LIMITE,PES_MINIMO,PES_SALDO")] Tabela_Pessoas tabela_pessoas)
+        public async Task<ActionResult> SalvarPessoa([Bind("PES_CODIGO,PES_NOME,PES_EMAIL,PES_SALARIO,PES_LIMITE,PES_MINIMO,PES_SALDO")] Tabela_Pessoas tabela_pessoas)
         {
-            
-           
-            if (ModelState.IsValid )
+            try
             {
+                if (tabela_pessoas.PES_SALDO < tabela_pessoas.PES_LIMITE)
+                    _email.Enviar(tabela_pessoas.PES_EMAIL, "teste", "teste");
+
                 await pessoasrepositorio.Update(tabela_pessoas);
-                _email.Enviar(tabela_pessoas.PES_EMAIL, "Teste", "TESTE");
                 return RedirectToAction("PesquisaCliente");
             }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
             return View(tabela_pessoas);
+
         }
 
         public async Task<ActionResult> DeletarPessoa(int? pes_codigo)
