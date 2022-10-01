@@ -240,44 +240,43 @@
                             <th></th>
                         </tr>
                     </thead>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_CODIGO)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_NOME)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_EMAIL)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_SALARIO)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_LIMITE)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_MINIMO)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PES_SALDO)
-                            </td>
-                            <td>
-                                <button class="btn btn-default">
-                                    @Html.ActionLink("Editar", "EditarPessoa", new { pes_codigo = item.PES_CODIGO })
-                                </button>
-                            </td>
-                            <td>
-                                <button class="btn btn-danger">
-                                    @Html.ActionLink("Excluir", "DeletarPessoa", new { pes_codigo = item.PES_CODIGO })
-                                </button>
-                            </td>
-                        </tr>
-                    }
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PES_CODIGO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PES_NOME)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PES_EMAIL)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PES_SALARIO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PES_LIMITE)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PES_MINIMO)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PES_SALDO)
+                                </td>
+                                <td class="d-flex">
+                                    <button class="btn btn-default ms-1">
+                                        @Html.ActionLink("Editar", "EditarPessoa", new { pes_codigo = item.PES_CODIGO })
+                                    </button>
+                                    <button class="btn btn-danger ms-1">
+                                        @Html.ActionLink("Excluir", "DeletarPessoa", new { pes_codigo = item.PES_CODIGO })
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
                 </table>
-
             </div>
             <!-- Row -->
             <!-- ============================================================== -->
@@ -298,7 +297,6 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
-           
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
@@ -324,15 +322,9 @@
     <script src="../dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="../dist/js/custom.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
 </body>
 
 <style>
-
     a {
         color: white;
         text-decoration: none;
