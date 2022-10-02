@@ -45,8 +45,8 @@ namespace WalletAdmin.Controllers
         // POST: CadastrarPessoaController/Edit/5
         [HttpPost, ActionName("EditarPessoa")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SalvarPessoa([Bind("PES_CODIGO,PES_NOME,PES_EMAIL,PES_SALARIO,PES_LIMITE,PES_MINIMO,PES_SALDO")] Tabela_Pessoas tabela_pessoas)
-        {
+        public async Task<ActionResult> SalvarPessoa(Tabela_Pessoas tabela_pessoas)
+        {   
             try
             {
                 if (tabela_pessoas.PES_SALDO < tabela_pessoas.PES_LIMITE)

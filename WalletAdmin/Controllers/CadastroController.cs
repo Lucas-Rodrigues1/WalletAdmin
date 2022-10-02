@@ -23,7 +23,7 @@ namespace WalletAdmin.Controllers
         // POST: CadastroController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Cadastro([Bind("Id,Usuario,Email,Senha")] Tabela_Usuarios tabela_Usuarios)
+        public async Task<ActionResult> Cadastro( Tabela_Usuarios tabela_Usuarios)
         {
             if (ModelState.IsValid)
             {

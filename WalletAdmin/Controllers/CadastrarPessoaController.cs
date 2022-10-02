@@ -26,7 +26,7 @@ namespace WalletAdmin.Controllers
         // POST: CadastrarPessoaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CadastrarPessoa([Bind("PES_CODIGO,PES_NOME,PES_EMAIL,PES_SALARIO,PES_LIMITE,PES_MINIMO,PES_SALDO")] Tabela_Pessoas tabela_pessoas)
+        public async Task<ActionResult> CadastrarPessoa(Tabela_Pessoas tabela_pessoas)
         {
 
             if (ModelState.IsValid)
