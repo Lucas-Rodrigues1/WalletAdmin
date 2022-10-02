@@ -10,28 +10,20 @@ namespace WalletAdmin.Controllers
     public class CadastroController : Controller
     {
         private readonly UsuariosRepositorio usuariosRepositorio;
-
         public CadastroController(NHibernate.ISession session) => usuariosRepositorio = new UsuariosRepositorio(session);
-
-        // GET: CadastroController
         public ActionResult Cadastro()
         {
             return View();
         }
-
-
-        // POST: CadastroController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Cadastro( Tabela_Usuarios tabela_Usuarios)
+        public async Task<ActionResult> Cadastro(Tabela_Usuarios tabela_Usuarios)
         {
             if (ModelState.IsValid)
             {
                 await usuariosRepositorio.Add(tabela_Usuarios);
-                return RedirectToAction("Index","Login");
+                return RedirectToAction("Index", "Login");
             }
-
             return View(tabela_Usuarios);
         }
     }
-    }
+}

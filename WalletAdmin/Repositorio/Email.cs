@@ -39,6 +39,7 @@ namespace WalletAdmin.Repositorio
 
                 using(SmtpClient smtp = new SmtpClient(host, porta))
                 {
+                    smtp.UseDefaultCredentials = false;
                     smtp.Credentials = new NetworkCredential(username, senha);
                     smtp.EnableSsl = true;
                     smtp.Send(mail);

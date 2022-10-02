@@ -15,17 +15,11 @@ namespace WalletAdmin.Controllers
         private readonly PessoasRepositorio pessoasRepositorio;
 
         public CadastrarPessoaController(NHibernate.ISession session) => pessoasRepositorio = new PessoasRepositorio(session);
-        // GET: CadastrarPessoaController
         public ActionResult CadastrarPessoa()
         {
             return View();
         }
-
-        
-
-        // POST: CadastrarPessoaController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> CadastrarPessoa(Tabela_Pessoas tabela_pessoas)
         {
 
@@ -37,17 +31,11 @@ namespace WalletAdmin.Controllers
 
             return View(tabela_pessoas);
         }
-
-       
-        // GET: CadastrarPessoaController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
-
-        // POST: CadastrarPessoaController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try
