@@ -25,7 +25,7 @@ namespace WalletAdmin.Controllers
         public IActionResult Index(string Usuario, string Senha)
         {
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Data Source=DESKTOP-29AA0TP\SQLEXPRESS;Initial Catalog=WalletAdmin;Integrated Security=True";
+            con.ConnectionString = @"Data Source=DESKTOP-5INB15I\SQLEXPRESS;Initial Catalog=WalletAdmin;Integrated Security=True";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             con.Open();

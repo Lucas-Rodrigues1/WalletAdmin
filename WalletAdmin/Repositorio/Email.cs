@@ -19,6 +19,7 @@ namespace WalletAdmin.Repositorio
 
         public bool Enviar(string email, string assunto, string mensagem)
         {
+           
             try
             {
                 string host = _configuration.GetValue<string>("SMTP:Host");

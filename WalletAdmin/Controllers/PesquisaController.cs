@@ -13,7 +13,6 @@ namespace WalletAdmin.Controllers
     public class PesquisaController : Controller
     {
         private readonly IEmail _email;
-        private readonly IConfiguration config;
         private readonly PessoasRepositorio pessoasrepositorio;
         public PesquisaController(NHibernate.ISession session, IEmail email)
         {
@@ -44,7 +43,10 @@ namespace WalletAdmin.Controllers
             {
                 if (tabela_pessoas.PES_SALDO < tabela_pessoas.PES_LIMITE)
                 {
-                    _email.Enviar(tabela_pessoas.PES_EMAIL, "teste", "teste");
+                    string assunto = "Alerta Saldo Perigoso";
+                    string mensagem = "Olá " +tabela_pessoas.PES_NOME + " seu saldo está abaixo do limite de segurança. Recomendamos que atualize assim que possível";
+                  
+                    _email.Enviar(tabela_pessoas.PES_EMAIL, assunto, mensagem);
                 }
 
                 await pessoasrepositorio.Update(tabela_pessoas);
@@ -54,7 +56,7 @@ namespace WalletAdmin.Controllers
             {
                 throw new Exception(ex.Message);
             }
-            return View(tabela_pessoas);
+         
 
         }
         public async Task<ActionResult> DeletarPessoa(int? pes_codigo)
