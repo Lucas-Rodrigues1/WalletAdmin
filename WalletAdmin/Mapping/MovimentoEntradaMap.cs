@@ -28,7 +28,7 @@ namespace WalletAdmin.Mapping
             Property(b => b.ENT_DATA, x =>
             {
                
-                x.Type(NHibernateUtil.Int32);
+                x.Type(NHibernateUtil.String);
                 x.NotNullable(false);
             });
             Property(b => b.ENT_DESCRICAO, x =>

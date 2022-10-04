@@ -29,13 +29,13 @@ namespace WalletAdmin.Controllers
 
             if (ModelState.IsValid)
             {
-                tabela_movimento_entrada.ENT_DATA = DateTime.Now.Day;
+                tabela_movimento_entrada.ENT_DATA = DateTime.Now.ToShortDateString();
                 await pessoasRepositorio.Add(tabela_pessoas);
                 await entradaRepositorio.Add(tabela_movimento_entrada);
             }
-                return View(tabela_pessoas);
+            return View(tabela_pessoas);
         }
-        public ActionResult Delete(int id)  
+        public ActionResult Delete(int id)
         {
             return View();
         }

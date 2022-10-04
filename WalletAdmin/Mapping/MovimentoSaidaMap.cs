@@ -27,7 +27,7 @@ namespace WalletAdmin.Mapping
             });
             Property(b => b.SAI_DATA, x =>
             {
-                x.Type(NHibernateUtil.Int32);
+                x.Type(NHibernateUtil.String);
                 x.NotNullable(false);
             });
             Property(b => b.SAI_DESCRICAO, x =>

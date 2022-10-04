@@ -14,11 +14,12 @@ namespace WalletAdmin.Controllers
     {
         private readonly IEmail _email;
         private readonly PessoasRepositorio pessoasrepositorio;
+        private readonly SaidaRepositorio saidaRepositorio;
    
         public PesquisaController(NHibernate.ISession session, IEmail email)
         {
-           
-            pessoasrepositorio = new PessoasRepositorio(session);
+            saidaRepositorio = new SaidaRepositorio(session);
+             pessoasrepositorio = new PessoasRepositorio(session);
             _email = email;
         }
         public ActionResult PesquisaCliente()
@@ -47,10 +48,11 @@ namespace WalletAdmin.Controllers
                 {
                     string assunto = "Alerta Saldo Perigoso";
                     string mensagem = "Olá " +tabela_pessoas.PES_NOME + " seu saldo está abaixo do limite de segurança. Recomendamos que atualize assim que possível";
-                    
                     _email.Enviar(tabela_pessoas.PES_EMAIL, assunto, mensagem);
                 }
+                tabela_movimento_Saida.SAI_DATA = DateTime.Now.ToShortDateString();
                 await pessoasrepositorio.Update(tabela_pessoas );
+                await saidaRepositorio.Add(tabela_movimento_Saida);
               
                 return RedirectToAction("PesquisaCliente");
             }
