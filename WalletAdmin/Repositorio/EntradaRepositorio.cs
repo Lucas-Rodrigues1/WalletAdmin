@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using NHibernate;
 using WalletAdmin.Entidades;
+
 namespace WalletAdmin.Repositorio
 {
-    public class PessoasRepositorio : IRepository<Tabela_Pessoas>
+    public class EntradaRepositorio : IRepositoyEntrada<Tabela_Movimento_Entrada>
     {
         private ISession _session;
-        public PessoasRepositorio(ISession session) => _session = session;
-        public async Task Add(Tabela_Pessoas item)
+        public EntradaRepositorio(ISession session) => _session = session;
+        public async Task Add(Tabela_Movimento_Entrada item)
         {
             ITransaction transaction = null;
             try
@@ -30,17 +31,17 @@ namespace WalletAdmin.Repositorio
             }
         }
 
-        public IEnumerable<Tabela_Pessoas> FindAll() => _session.Query<Tabela_Pessoas>().ToList();
+        public IEnumerable<Tabela_Movimento_Entrada> FindAll() => _session.Query<Tabela_Movimento_Entrada>().ToList();
 
-        public async Task<Tabela_Pessoas> FindByID(int pes_codigo) => await _session.GetAsync<Tabela_Pessoas>(pes_codigo);
+        public async Task<Tabela_Movimento_Entrada> FindByID(int id) => await _session.GetAsync<Tabela_Movimento_Entrada>(id);
 
-        public async Task Remove(int pes_codigo)
+        public async Task Remove(int id)
         {
             ITransaction transaction = null;
             try
             {
                 transaction = _session.BeginTransaction();
-                var item = await _session.GetAsync<Tabela_Pessoas>(pes_codigo);
+                var item = await _session.GetAsync<Tabela_Movimento_Entrada>(id);
                 await _session.DeleteAsync(item);
                 await transaction.CommitAsync();
             }
@@ -55,7 +56,7 @@ namespace WalletAdmin.Repositorio
             }
         }
 
-        public async Task Update(Tabela_Pessoas item)
+        public async Task Update(Tabela_Movimento_Entrada item)
         {
             ITransaction transaction = null;
             try

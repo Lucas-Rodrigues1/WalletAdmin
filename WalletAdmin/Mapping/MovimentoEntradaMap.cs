@@ -22,14 +22,14 @@ namespace WalletAdmin.Mapping
 
             Property(b => b.PES_CODIGO, x =>
             {
-                x.Type(NHibernateUtil.Int32);
-                x.NotNullable(true);
+                x.Type(NHibernateUtil.Int16);
+                x.NotNullable(false);
             });
             Property(b => b.ENT_DATA, x =>
             {
                
-                x.Type(NHibernateUtil.DateTime);
-                x.NotNullable(true);
+                x.Type(NHibernateUtil.Int32);
+                x.NotNullable(false);
             });
             Property(b => b.ENT_DESCRICAO, x =>
             {

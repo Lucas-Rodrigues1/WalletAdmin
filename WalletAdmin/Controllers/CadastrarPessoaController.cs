@@ -10,28 +10,32 @@ namespace WalletAdmin.Controllers
 {
     public class CadastrarPessoaController : Controller
     {
-   
+
 
         private readonly PessoasRepositorio pessoasRepositorio;
-
-        public CadastrarPessoaController(NHibernate.ISession session) => pessoasRepositorio = new PessoasRepositorio(session);
+        private readonly EntradaRepositorio entradaRepositorio;
+        public CadastrarPessoaController(NHibernate.ISession session)
+        {
+            entradaRepositorio = new EntradaRepositorio(session);
+            pessoasRepositorio = new PessoasRepositorio(session);
+        }
         public ActionResult CadastrarPessoa()
         {
             return View();
         }
         [HttpPost]
-        public async Task<ActionResult> CadastrarPessoa(Tabela_Pessoas tabela_pessoas)
+        public async Task<ActionResult> CadastrarPessoa(Tabela_Pessoas tabela_pessoas, Tabela_Movimento_Entrada tabela_movimento_entrada)
         {
 
             if (ModelState.IsValid)
             {
+                tabela_movimento_entrada.ENT_DATA = DateTime.Now.Day;
                 await pessoasRepositorio.Add(tabela_pessoas);
-                return View(tabela_pessoas);
+                await entradaRepositorio.Add(tabela_movimento_entrada);
             }
-
-            return View(tabela_pessoas);
+                return View(tabela_pessoas);
         }
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id)  
         {
             return View();
         }
