@@ -1,7 +1,4 @@
-﻿@model WalletAdmin.Entidades.Tabela_Pessoas
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html dir="ltr" lang="en">
 
 <head>
@@ -17,7 +14,10 @@
     <title>Flexy Admin Lite Template by WrapPixel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/Flexy-admin-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <!-- Custom CSS -->
+    <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -55,17 +55,17 @@
                     <a class="navbar-brand" href="index.html">
                         <!-- Logo icon -->
                         <b class="logo-icon">
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
+                            <!--you can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- dark logo icon -->
                             <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
-                            <!-- Light Logo icon -->
+                            <!-- light logo icon -->
                             <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             Wallet Admin
-                            @*<!-- dark Logo text -->
+                            @*  <!-- dark Logo text -->
                                 <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo text -->
                                 <img src="../assets/images/logo-light-text.png" class="light-logo" alt="homepage" />*@
@@ -76,7 +76,7 @@
                     <!-- ============================================================== -->
                     <!-- This is for the sidebar toggle which is visible on mobile only -->
                     <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
-                        <i class="ti-menu ti-close"></i>
+                        <i class="mdi mdi-menu"></i>
                     </a>
                 </div>
                 <!-- ============================================================== -->
@@ -159,13 +159,14 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                              asp-controller="Relatorio" asp-action="Relatorio" aria-expanded="false">
+                               asp-controller="Relatorio" asp-action="Relatorio" aria-expanded="false">
                                 <i class="mdi mdi-file"></i><span class="hide-menu">Relatórios</span>
                             </a>
                         </li>
                         <li class="text-center p-40 upgrade-btn">
                         </li>
                     </ul>
+
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
@@ -187,14 +188,13 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 d-flex align-items-center">
                                 <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Excluir</li>
+                                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                             </ol>
                         </nav>
-                        <h1 class="mb-0 fw-bold">Excluir Pessoa</h1>
+                        <h1 class="mb-0 fw-bold">Home</h1>
                     </div>
                     <div class="col-6">
-                        <div class="text-end ">
-
+                        <div class="text-end upgrade-btn">
                         </div>
                     </div>
                 </div>
@@ -207,131 +207,40 @@
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <!-- ============================================================== -->
-                <!-- Start Page Content -->
+                <!-- Sales chart -->
                 <!-- ============================================================== -->
-                <!-- Row -->
-                <dl class="dl-horizontal">
-                    <hr />
-                    <dt>
-                        <h3>
-                            #ID
-                        </h3>
-                    </dt>
-                    <dd>
-                        <h4>
-                            @Html.DisplayFor(model => model.PES_CODIGO)
-                        </h4>
-                    </dd>
-                    <hr />
-                    <dt>
-                        <h3>
-                            Nome
-                        </h3>
-                    </dt>
-                    <dd>
-                        <h4>
-                            @Html.DisplayFor(model => model.PES_NOME)
-                        </h4>
-                    </dd>
-                    <hr />
-                    <dt>
-                        <h3>
-                            E-mail
-                        </h3>
-                    </dt>
-                    <dd>
-                        <h4>
-                            @Html.DisplayFor(model => model.PES_EMAIL)
-                        </h4>
-                    </dd>
-                    <hr />
-                    <dt>
-                        <h3>
-                            Salário
-                        </h3>
-                    </dt>
-                    <dd>
-                        <h4>
-                            @Html.DisplayFor(model => model.PES_SALARIO)
-                        </h4>
-                    </dd>
-                    <hr />
-                    <dt>
-                        <h3>
-                            Limite De Segurança
-                        </h3>
-                    </dt>
-                    <dd>
-                        <h4>
-                            @Html.DisplayFor(model => model.PES_LIMITE)
-                        </h4>
-                    </dd>
-                    <hr />
-                    <dt>
-                        <h3>
-                            Mínimo
-                        </h3>
-                    </dt>
-                    <dd>
-                        <h4>
-                            @Html.DisplayFor(model => model.PES_MINIMO)
-                        </h4>
-                    </dd>
-                    <hr />
-                    <dt>
-                        <h3>
-                            Saldo
-                        </h3>
-                    </dt>
-                    <dd>
-                        <h4>
-                            @Html.DisplayFor(model => model.PES_SALDO)
-                        </h4>
-                    </dd>
-                    <hr />
-                </dl>
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
-
-                    <div class="form-actions no-color">
-                        <button type="submit" value="Delete"class="btn btn-danger"> <span class="excluir">Excluir</span></button>
-                        <button class="btn btn-warning">
-                            @Html.ActionLink("" +
-                           "Voltar", "PesquisaCliente")
-                        </button>
-                    </div>
-                }
-
+                <!-- ============================================================== -->
+                <!-- Sales chart -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Table -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Table -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Recent comment and chats -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Recent comment and chats -->
+                <!-- ============================================================== -->
             </div>
-            <!-- Row -->
             <!-- ============================================================== -->
-            <!-- End PAge Content -->
+            <!-- End Container fluid  -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
-            <!-- Right sidebar -->
+            <!-- footer -->
             <!-- ============================================================== -->
-            <!-- .right-sidebar -->
+            <footer class="footer text-center">
+                Todos direitos reservados a WalletAdmin 2022
+            </footer>
             <!-- ============================================================== -->
-            <!-- End Right sidebar -->
+            <!-- End footer -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Container fluid  -->
+        <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
-        <footer class="footer text-center">
-            All Rights Reserved by Flexy Admin. Designed and Developed by <a href="https://www.wrappixel.com">WrapPixel</a>.
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
     </div>
     <!-- ============================================================== -->
     <!-- End Wrapper -->
@@ -349,25 +258,15 @@
     <script src="../dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="../dist/js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="../dist/js/pages/dashboards/dashboard1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+
+    </script>
 </body>
 
-<style>
-
-    a {
-        color: white;
-        text-decoration: none;
-    }
-
-        a:hover {
-            color: white;
-            text-decoration: none;
-        }
-            button .excluir{
-                color:white;
-            }
-</style>
 </html>
-
-
-
-
