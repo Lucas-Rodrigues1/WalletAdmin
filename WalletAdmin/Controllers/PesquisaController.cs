@@ -65,8 +65,6 @@ namespace WalletAdmin.Controllers
             {
                 throw new Exception(ex.Message);
             }
-         
-
         }
         public async Task<ActionResult> DeletarPessoa(int? pes_codigo)
         {
