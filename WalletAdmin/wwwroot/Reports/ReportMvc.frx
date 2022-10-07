@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="10/07/2022 11:24:17" ReportInfo.Modified="10/07/2022 14:29:10" ReportInfo.CreatorVersion="2022.3.0.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="customersList" ReferenceName="customersList" DataType="null" Enabled="true">
+      <Column Name="PES_CODIGO" DataType="System.Int32"/>
+      <Column Name="PES_NOME" DataType="System.String"/>
+      <Column Name="PES_EMAIL" DataType="System.String"/>
+      <Column Name="PES_SALARIO" DataType="System.Decimal"/>
+      <Column Name="PES_LIMITE" DataType="System.Decimal"/>
+      <Column Name="PES_MINIMO" DataType="System.Decimal"/>
+      <Column Name="PES_SALDO" DataType="System.Decimal"/>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="75.6">
+      <TextObject Name="Text15" Left="481.95" Top="18.9" Width="217.35" Height="37.8" Text="Relátorio Geral&#13;&#10;" HorzAlign="Center" Font="Arial, 18pt, style=Bold"/>
+      <TextObject Name="Text18" Left="75.6" Top="18.9" Width="217.35" Height="37.8" Text="Wallet Admin&#13;&#10;&#13;&#10;" HorzAlign="Center" Font="Arial, 22pt, style=Bold"/>
+      <PictureObject Name="Picture1" Left="37.8" Width="47.25" Height="66.15" ImageFormat="Png" Image="iVBORw0KGgoAAAANSUhEUgAAABoAAAAfCAYAAAD5h919AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEQAACxEBf2RfkQAAAZdJREFUSEvNlL9Kw1AUxvME0jX9A3mEPIBgXkAsLq5xd+jmpgEXx6BgBZe8gcXFwSVjx+Lq0OLg2oCCFcH4neS2ub2epunNVfzgt+Sc832Xe2+upcq++XTBaU32hB0vuz/royk1xBh4wrqQffl2pzSaoisiEHL1fs40mGIKGnnQ9exDKZrGp8N3lI+/wcBqHT9tMwXTxFZn997DGXFFk4RZUPPkmSuapJsFtQ+HXNEUcXbjKAikzbMXrqkuI5Bf7XlQZ/8htS9euWYdEhCAPIS0CALtgzilbSyjdfQYwcArwRXWy5KDKhKI0c2EQSNBX8MtD+wIii2bC4O1gmAagClIFW6BI9rqBcEolow5aAH5mWFQKwgGoWRYBoU1tIIw6EhGVQh0g3qK0TrGukFVt22BbhDBGq7ir7Zu8r8vw4bXewKy6+0qRuuQf9hIMuRIQPHIMmZl9MRYJhj5gFathtAilt88DA8UszKK90sSTF1ADyvx81ElYZi2L5HMVhGKEX3BxAdlYQPRWl8wc0AE5MAR8EWLpizrG0PoXFUhBb/ZAAAAAElFTkSuQmCC"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="79.6" Width="718.2" Height="28.35">
+      <TextObject Name="Text2" Left="28.35" Width="37.8" Height="18.9" Text="#ID" Font="Arial, 10pt"/>
+      <TextObject Name="Text4" Left="75.6" Width="47.25" Height="18.9" Text="Nome&#13;&#10;" Font="Arial, 10pt"/>
+      <TextObject Name="Text6" Left="170.1" Width="94.5" Height="18.9" Text="Email&#13;&#10;" Font="Arial, 10pt"/>
+      <TextObject Name="Text8" Left="359.1" Width="94.5" Height="18.9" Text="Salário&#13;&#10;" Font="Arial, 10pt"/>
+      <TextObject Name="Text10" Left="500.85" Width="94.5" Height="18.9" Text="Limite&#13;&#10;" Font="Arial, 10pt"/>
+      <TextObject Name="Text14" Left="633.15" Width="85.05" Height="18.9" Text="Saldo&#13;&#10;" Font="Arial, 10pt"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="111.95" Width="718.2" Height="66.15" DataSource="customersList">
+      <TextObject Name="Text1" Left="28.35" Top="9.45" Width="28.35" Height="18.9" Text="[customersList.PES_CODIGO]" Font="Arial, 10pt"/>
+      <TextObject Name="Text3" Left="75.6" Top="9.45" Width="85.05" Height="18.9" Text="[customersList.PES_NOME]" Font="Arial, 10pt"/>
+      <TextObject Name="Text5" Left="170.1" Top="9.45" Width="160.65" Height="18.9" Text="[customersList.PES_EMAIL]" Font="Arial, 10pt"/>
+      <TextObject Name="Text7" Left="340.2" Top="9.45" Width="103.95" Height="18.9" Text="[customersList.PES_SALARIO]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text9" Left="453.6" Top="9.45" Width="113.4" Height="18.9" Text="[customersList.PES_LIMITE]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+      <TextObject Name="Text13" Left="604.8" Top="9.45" Width="85.05" Height="18.9" Text="[customersList.PES_SALDO]" Format="Currency" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial, 10pt" Trimming="EllipsisCharacter"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="182.1" Width="718.2" Height="37.8">
+      <TextObject Name="Text17" Left="661.5" Top="18.9" Width="56.7" Height="18.9" Text="[PageN]" HorzAlign="Center" Font="Arial, 10pt"/>
+      <TextObject Name="Text16" Left="283.5" Top="18.9" Width="94.5" Height="18.9" Text="[Date]" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>

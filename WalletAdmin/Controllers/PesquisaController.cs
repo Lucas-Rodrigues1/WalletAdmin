@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FastReport.Export.PdfSimple;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WalletAdmin.Entidades;
@@ -12,15 +15,17 @@ namespace WalletAdmin.Controllers
 {
     public class PesquisaController : Controller
     {
+        public readonly IWebHostEnvironment _webHostEnv;
         private readonly IEmail _email;
         private readonly PessoasRepositorio pessoasrepositorio;
         private readonly SaidaRepositorio saidaRepositorio;
    
-        public PesquisaController(NHibernate.ISession session, IEmail email)
+        public PesquisaController(NHibernate.ISession session, IEmail email, IWebHostEnvironment webHostEnv)
         {
             saidaRepositorio = new SaidaRepositorio(session);
              pessoasrepositorio = new PessoasRepositorio(session);
             _email = email;
+            _webHostEnv = webHostEnv;
         }
         public ActionResult PesquisaCliente()
         {
@@ -81,6 +86,40 @@ namespace WalletAdmin.Controllers
         {
             await pessoasrepositorio.Remove(pes_codigo);
             return RedirectToAction("PesquisaCliente");
+        }
+        public IActionResult CreateReport()
+        {
+            var caminhoReport = Path.Combine(_webHostEnv.WebRootPath, @"reports\ReportMvc.frx");
+            var reportFile = caminhoReport;
+            var freport = new FastReport.Report();
+            var customersList = pessoasrepositorio.FindAll().ToList();
+
+            freport.Dictionary.RegisterBusinessObject(customersList, "customersList", 10, true);
+            freport.Report.Save(reportFile);
+
+            return Ok($" Relatorio gerado : {caminhoReport}");
+        }
+
+        public IActionResult ExportReport()
+        {
+            var caminhoReport = Path.Combine(_webHostEnv.WebRootPath, @"reports\ReportMvc.frx");
+            var reportFile = caminhoReport;
+            var freport = new FastReport.Report();
+            var customersList = pessoasrepositorio.FindAll().ToList();
+
+            freport.Report.Load(reportFile);
+            freport.Dictionary.RegisterBusinessObject(customersList, "customersList", 10, true);
+            //freport.Report.Save(reportFile);
+            freport.Prepare();
+
+            var pdfExport = new PDFSimpleExport();
+
+            using MemoryStream ms = new MemoryStream();
+            pdfExport.Export(freport, ms);
+            ms.Flush();
+
+            return File(ms.ToArray(), "application/pdf", "Relatório.pdf");
+            //return Ok($"Relatorio gerado: {caminhoReport}");
         }
     }
 }
